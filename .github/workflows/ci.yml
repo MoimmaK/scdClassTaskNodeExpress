@@ -10,10 +10,12 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        os: [ubuntu-latest, windows-latest]  # Run on both Ubuntu and Windows
+        node-version: [16.x, 18.x]  # Test on Node.js 16.x and 18.x
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout repository
